@@ -37,16 +37,20 @@ extension ViewController: UICollectionViewDataSource {
         if let entry = vm.allCells[indexPath.row] as? Entry,
            let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCollectionViewCell {
             photoCell.configure(data: entry)
+            
             if selectedId == vm.allCells[indexPath.row].id {
-                photoCell.layer.borderColor = UIColor.blue.cgColor
+                photoCell.layer.borderColor = UIColor.systemIndigo.cgColor
                 photoCell.layer.borderWidth = 2.0
             } else {
                 photoCell.layer.borderColor = UIColor.clear.cgColor
             }
+            
             return photoCell
         } else if let infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as? InfoCollectionViewCell, let info = vm.allCells[indexPath.row] as? Info {
             infoCell.configure(data: info)
+            
             infoIndex = indexPath.row
+            
             return infoCell
         }
         return UICollectionViewCell()
@@ -66,9 +70,8 @@ extension ViewController: UICollectionViewDelegate {
     
     func getOffset(index: Int) -> Int {
         let rowItems = Int(feedView.bounds.width/175)
-        let correctIndex = infoIndex < index ? index - 1 : index
-        let rowIndex = correctIndex/rowItems
-        return (rowItems * rowIndex) + 1
+        let rowIndex = index/rowItems
+        return (rowItems * (rowIndex + 1)) - 1
     }
 }
 
@@ -77,6 +80,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         if vm.allCells[indexPath.row] is Entry {
             return CGSize(width: 175, height: 175)
         }
-        return CGSize(width: 300, height: 175)
+        return CGSize(width: feedView.bounds.width, height: 130)
     }
 }
