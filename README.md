@@ -6,6 +6,9 @@ Clone or download the project > open .xcodeproj > Wait for the dependencies to l
 
 ### Provisions:
 * A display of public images which give you some information about the image on clicking the image.
-* Architechture used is MVVM and the project is written in Swift
+* Architechture used is _MVVM_ and the project is written in` Swift`
 * Dependency is managed by `Swift Package Manager`
 * Library used for image caching and smooth scrolling is `SDWebImage`. You can find the package [here](https://github.com/SDWebImage/SDWebImage)
+
+#### TODO
+* Debug offset issue on change in orientation
