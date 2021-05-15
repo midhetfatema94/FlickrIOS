@@ -10,8 +10,12 @@ import UIKit
 class InfoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var sizeLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
-    
+    func configure(data: Info) {
+        titleLabel.text = data.imageTitle
+        authorLabel.text = "Clicked by: \(data.authorName ?? "")"
+        dateLabel.text = data.imageDate
+    }
 }

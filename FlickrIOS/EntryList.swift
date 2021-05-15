@@ -54,7 +54,15 @@ class EntryList: NSObject {
         //1. Filter all prev info cells
         //2. Create Info model according to the index
         //3. Add info at index
-        allCells.insert(Info(id: ""), at: index + offset)
+        let photoId = allCells[index].id
+        
+        allCells = allCells.filter { $0 is Entry }
+        
+        if let cellData = allCells.filter({ $0.id == photoId }).first, let data = cellData as? Entry {
+            let photoInfo = Info(details: data)
+            allCells.insert(photoInfo, at: offset + 1)
+        }
+        
         completionHandler()
     }
 }
