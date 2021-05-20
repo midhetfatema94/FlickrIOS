@@ -60,7 +60,12 @@ class EntryList: NSObject {
         
         if let cellData = allCells.filter({ $0.id == photoId }).first, let data = cellData as? Entry {
             let photoInfo = Info(details: data)
-            allCells.insert(photoInfo, at: offset + 1)
+            let insertionIndex = offset + 1
+            if insertionIndex < allCells.count {
+                allCells.insert(photoInfo, at: insertionIndex)
+            } else {
+                allCells.append(photoInfo)
+            }
         }
         
         completionHandler()

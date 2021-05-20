@@ -69,7 +69,7 @@ extension ViewController: UICollectionViewDelegate {
     }
     
     func getOffset(index: Int) -> Int {
-        let rowItems = Int(feedView.bounds.width/175)
+        let rowItems = Int(feedView.bounds.width/(feedView.bounds.width/2 - 20))
         let rowIndex = index/rowItems
         return (rowItems * (rowIndex + 1)) - 1
     }
@@ -78,7 +78,7 @@ extension ViewController: UICollectionViewDelegate {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if vm.allCells[indexPath.row] is Entry {
-            return CGSize(width: 175, height: 175)
+            return CGSize(width: feedView.bounds.width/2 - 20, height: feedView.bounds.width/2 - 20)
         }
         return CGSize(width: feedView.bounds.width, height: 130)
     }
