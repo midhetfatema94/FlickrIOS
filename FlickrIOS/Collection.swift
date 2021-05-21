@@ -7,10 +7,14 @@
 
 import Foundation
 
-class Collection {
+class Collection: Equatable {
     var id: String
     
     init(id: String) {
         self.id = id
+    }
+    
+    static func == (lhs: Collection, rhs: Collection) -> Bool {
+        return lhs.id == rhs.id
     }
 }

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var feedView: UICollectionView!
     
     var vm = EntryList()
-    var selectedId = ""
+    var selectedItem = Collection(id: "")
     var infoIndex = -1
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ extension ViewController: UICollectionViewDataSource {
            let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCollectionViewCell {
             photoCell.configure(data: entry)
             
-            if selectedId == vm.allCells[indexPath.row].id {
+            if selectedItem == vm.allCells[indexPath.row] {
                 photoCell.layer.borderColor = UIColor.systemIndigo.cgColor
                 photoCell.layer.borderWidth = 2.0
             } else {
@@ -59,8 +59,8 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedId = vm.allCells[indexPath.row].id
-        vm.addInfo(index: indexPath.row, offset: getOffset(index: indexPath.row), completionHandler: {[weak self] in
+        selectedItem = vm.allCells[indexPath.row]
+        vm.addInfo(index: indexPath.row, offset: getOffset(), completionHandler: {[weak self] in
             UIView.animate(withDuration: 0.5) {
                 let indexSet = IndexSet(integersIn: 0...0)
                 self?.feedView.reloadSections(indexSet)
@@ -68,17 +68,21 @@ extension ViewController: UICollectionViewDelegate {
         })
     }
     
-    func getOffset(index: Int) -> Int {
-        let rowItems = Int(feedView.bounds.width/(feedView.bounds.width/2 - 20))
-        let rowIndex = index/rowItems
-        return (rowItems * (rowIndex + 1)) - 1
+    func getOffset() -> Int {
+        let cellDimension = (feedView.bounds.width/2) - 5
+        let rowItems = Int(feedView.bounds.width/cellDimension)
+        let filteredArray = vm.allCells.filter { $0 is Entry }
+        let index = filteredArray.firstIndex(of: selectedItem) ?? -1
+        let rowIndex = index/rowItems + 1
+        return rowIndex * 2
     }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if vm.allCells[indexPath.row] is Entry {
-            return CGSize(width: feedView.bounds.width/2 - 20, height: feedView.bounds.width/2 - 20)
+            let cellDimension = (feedView.bounds.width/2) - 5
+            return CGSize(width: cellDimension, height: cellDimension)
         }
         return CGSize(width: feedView.bounds.width, height: 130)
     }
