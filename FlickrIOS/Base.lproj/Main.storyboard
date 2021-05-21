@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YnY-yP-4ha">
-                                <rect key="frame" x="20" y="108" width="374" height="754"/>
+                                <rect key="frame" x="10" y="98" width="394" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yT0-Rl-rFw">
                                     <size key="itemSize" width="128" height="128"/>
@@ -28,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="BiC-gP-2gB" customClass="PhotoCollectionViewCell" customModule="FlickrIOS" customModuleProvider="target">
-                                        <rect key="frame" x="112" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="122" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xgB-rm-PVW">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -52,7 +52,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="infoCell" id="YhD-br-r4z" customClass="InfoCollectionViewCell" customModule="FlickrIOS" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="160" width="350" height="130"/>
+                                        <rect key="frame" x="22" y="160" width="350" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P9H-EG-SNE">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="130"/>
@@ -107,10 +107,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YnY-yP-4ha" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="CbS-Fz-8tV"/>
+                            <constraint firstItem="YnY-yP-4ha" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="CbS-Fz-8tV"/>
                             <constraint firstItem="YnY-yP-4ha" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="EAX-ZF-pEl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnY-yP-4ha" secondAttribute="trailing" constant="20" id="HeZ-qg-ICo"/>
-                            <constraint firstItem="YnY-yP-4ha" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="V0A-re-HKc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnY-yP-4ha" secondAttribute="trailing" constant="10" id="HeZ-qg-ICo"/>
+                            <constraint firstItem="YnY-yP-4ha" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="V0A-re-HKc"/>
                             <constraint firstItem="YnY-yP-4ha" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cYb-9q-Khz"/>
                         </constraints>
                     </view>
